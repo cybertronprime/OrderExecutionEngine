@@ -9,12 +9,12 @@ CREATE TABLE IF NOT EXISTS orders(
     amount_out  DECIMAL(20, 8) ,
     slippage DECIMAL(5,4),
     selected_dex VARCHAR(20),
-    tx_hash VVARCHAR(100),
+    tx_hash VARCHAR(100),
     error_message TEXT,
-    retry_count INTEGER DEFAULT 0
-    raydium_quote JSONB
-    meteora_quote JSONB
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    retry_count INTEGER DEFAULT 0,
+    raydium_quote JSONB,
+    meteora_quote JSONB,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 CREATE INDEX IF NOT EXISTS idx_orders_order_id ON orders(order_id);

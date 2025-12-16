@@ -1,8 +1,8 @@
-import IORedis from 'ioredis';
-import {config} from '../config/index';
-import {Order,OrderStatusType} from '../types/index';
+import {Redis} from 'ioredis';
+import {config} from '../config/index.js';
+import {Order,OrderStatusType} from '../types/index.js';
 
-const Redis = IORedis;
+
 const redisParams = {
     host: config.redis.host,
     port: Number(config.redis.port),

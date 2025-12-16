@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Order Execution Engine",
   "main": "index.js",
+
+  "type":"module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/index.ts"
   },
   "author": "",
   "license": "ISC",
