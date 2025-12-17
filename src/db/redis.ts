@@ -43,3 +43,8 @@ export async function deleteActiveOrder(orderId:string):Promise<void>{
     await redis.del(`order:${orderId}`)
 
 }
+export async function cacheOrder(orderId: string, data: object): Promise<void> {
+    const key = `order:${orderId}`;
+    await redis.hset(key, data as Record<string, string>);
+    await redis.expire(key, Number(TTL));
+  }

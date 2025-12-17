@@ -3,10 +3,15 @@ import cors from "@fastify/cors";
 import { config } from "./../config/index.js";
 import {pool} from "../db/postgres.js";
 import { redis } from "./../db/redis.js";
+import websocket from "@fastify/websocket";
+import { orderRoutes } from "./routes/orders.js";
+
 
 
 export const app = Fastify({ logger: true });
 app.register(cors);
+app.register(websocket);
+app.register(orderRoutes);
 
 app.get("/health", async (request, reply) => {
     const checks:Record<string,string>={}

@@ -39,6 +39,8 @@ export interface OrderInput{
     tokenOut:string;
     amountIn:number;
     slippage:number;
+    poolId:string;
+    baseIn?:boolean;
 }
 export interface OrderJobData{
     orderId:string;
