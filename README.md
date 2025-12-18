@@ -62,7 +62,7 @@ I chose **Market Order** because it's the most straightforward to implement and 
 
 ```bash
 # Clone and install
-git clone <repo-url>
+git clone https://github.com/cybertronprime/OrderExecutionEngine
 cd order-execution-engine
 npm install
 
@@ -162,7 +162,7 @@ npm run test:flow
 
 ## Postman Collection
 
-Import `postman/Order-Execution-Engine.postman_collection.json` into Postman.
+Import `apis.json` into Postman.
 
 ## Design Decisions
 
@@ -180,7 +180,7 @@ src/
 ├── queue/           # BullMQ queue + worker
 ├── server/          # Fastify server + routes
 ├── services/
-│   ├── dex-router/  # Raydium + Meteora
+│   ├── router/  # Raydium + Meteora
 │   ├── pubsub.ts    # Redis pub/sub
 │   └── solana/      # Wallet service
 ├── tests/           # Unit + integration tests
