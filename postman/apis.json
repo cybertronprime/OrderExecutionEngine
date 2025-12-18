@@ -1,0 +1,51 @@
+{
+    "info": {
+      "name": "Order Execution Engine",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Health Check",
+        "request": {
+          "method": "GET",
+          "url": "{{baseUrl}}/health"
+        }
+      },
+      {
+        "name": "Submit Order",
+        "request": {
+          "method": "POST",
+          "url": "{{baseUrl}}/api/orders/execute",
+          "header": [{"key": "Content-Type", "value": "application/json"}],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"tokenIn\": \"SOL\",\n  \"tokenOut\": \"USDC\",\n  \"amountIn\": 0.01,\n  \"slippage\": 0.5\n}"
+          }
+        }
+      },
+      {
+        "name": "Get Order Status",
+        "request": {
+          "method": "GET",
+          "url": "{{baseUrl}}/api/orders/{{orderId}}"
+        }
+      },
+      {
+        "name": "Submit Order with Pool",
+        "request": {
+          "method": "POST",
+          "url": "{{baseUrl}}/api/orders/execute",
+          "header": [{"key": "Content-Type", "value": "application/json"}],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"tokenIn\": \"SOL\",\n  \"tokenOut\": \"USDC\",\n  \"amountIn\": 0.01,\n  \"poolId\": \"GoZmddUBTdiyRoGZSfxwX8p5ZNoVhDo42YN996JdDwoi\",\n  \"baseIn\": true\n}"
+          }
+        }
+      }
+    ],
+    "variable": [
+      {"key": "baseUrl", "value": "http://localhost:3000"},
+      {"key": "orderId", "value": ""}
+    ]
+  }
+  

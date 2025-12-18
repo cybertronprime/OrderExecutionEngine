@@ -5,7 +5,7 @@ const sleep= (delay:number)=> new Promise(r=>setTimeout(r,delay))
 export async function getMeteoraQuote(amountIn:number):Promise<DexQuote>{
     await sleep(100 + Math.random()*200);
 
-    const basePrice= 119 // $119
+    const basePrice= 0.0001 // $0.00001
     const variance = 0.97 + Math.random()*0.05;
     const price= basePrice*variance;
     const fee = 0.002;

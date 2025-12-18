@@ -9,7 +9,7 @@ import { exec } from 'child_process';
 
 async function processOrder(job:Job<{orderId:string;poolId?:string;baseIn?:boolean}>){
     const {orderId,poolId,baseIn}=job.data;
-    console.log(`Processing order ${orderId} `)
+    console.log(`Worker Processing order ${orderId} `)
     const order = await getOrder(orderId);
     if (!order){
         throw new Error(`Order ${orderId} not found`);
@@ -28,7 +28,7 @@ async function processOrder(job:Job<{orderId:string;poolId?:string;baseIn?:boole
         })
         await updateStatus(orderId,OrderStatus.SUBMITTED);
         const txHash = await executeSwap(bestQuote.dex, order.amountIn, order.slippage, poolId, baseIn ?? true);
-        console.log(`Order ${orderId} submitted with txHash ${txHash}`);
+        console.log(`Worker Order ${orderId} submitted with txHash ${txHash}`);
 
         await updateOrder(orderId,OrderStatus.CONFIRMED,{txHash,amountOut:bestQuote.amountOut});
         await publishOrderUpdate(orderId,OrderStatus.CONFIRMED,{txHash:txHash});
